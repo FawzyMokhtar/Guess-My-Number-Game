@@ -1,5 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 
+import { Ionicons } from '@expo/vector-icons';
+
 import PrimaryButton from '../ui/PrimaryButton';
 import Card from '../ui/Card';
 import InstructionText from '../ui/InstructionText';
@@ -10,10 +12,14 @@ function GuessNumber({ onLower, onHigher }) {
       <InstructionText>Lower or higher?</InstructionText>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={onLower}>-</PrimaryButton>
+          <PrimaryButton onPress={onLower}>
+            <Ionicons name='md-remove' size={24} color='white' />
+          </PrimaryButton>
         </View>
         <View style={styles.buttonContainer}>
-          <PrimaryButton onPress={onHigher}>+</PrimaryButton>
+          <PrimaryButton onPress={onHigher}>
+            <Ionicons name='md-add' size={24} color='white' />
+          </PrimaryButton>
         </View>
       </View>
     </Card>

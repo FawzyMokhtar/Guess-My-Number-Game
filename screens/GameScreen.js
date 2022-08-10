@@ -65,19 +65,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
   },
-  gameOptionsContainer: {},
-  higherOrLowerText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  gameOptionsButtonsContainer: {
-    flexDirection: 'row',
-    marginVertical: 16,
-  },
-  gameOptionsButtonContainer: {
-    flex: 1,
-  },
 });
 
 function generateRandomBetween(min, max, exclude) {
