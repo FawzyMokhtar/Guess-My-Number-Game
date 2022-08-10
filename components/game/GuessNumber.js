@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import PrimaryButton from '../ui/PrimaryButton';
+import Card from '../ui/Card';
+import InstructionText from '../ui/InstructionText';
 
 function GuessNumber({ onLower, onHigher }) {
   return (
-    <View style={styles.container}>
-      <Text style={styles.higherOrLowerText}>Higher or lower?</Text>
+    <Card>
+      <InstructionText>Lower or higher?</InstructionText>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonContainer}>
           <PrimaryButton onPress={onLower}>-</PrimaryButton>
@@ -14,19 +16,13 @@ function GuessNumber({ onLower, onHigher }) {
           <PrimaryButton onPress={onHigher}>+</PrimaryButton>
         </View>
       </View>
-    </View>
+    </Card>
   );
 }
 
 export default GuessNumber;
 
 const styles = StyleSheet.create({
-  container: {},
-  higherOrLowerText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
   buttonsContainer: {
     flexDirection: 'row',
     marginVertical: 16,
