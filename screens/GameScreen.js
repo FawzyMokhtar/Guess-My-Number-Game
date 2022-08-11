@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Alert } from 'react-native';
 import Title from '../components/ui/Title';
 import GuessedNumberContainer from '../components/game/GuessedNumberContainer';
 import GuessNumber from '../components/game/GuessNumber';
+import RoundsLog from '../components/game/RoundsLog';
 
 let minBoundary = 1;
 let maxBoundary = 100;
@@ -11,12 +12,19 @@ let maxBoundary = 100;
 function GameScreen({ gameNumber, onGameOver }) {
   const initialGuess = generateRandomBetween(1, 100, gameNumber);
   const [guessedNumber, setGuessedNumber] = useState(initialGuess);
+  const [rounds, setRounds] = useState([]);
 
   useEffect(() => {
     if (guessedNumber === gameNumber) {
-      onGameOver();
+      onGameOver(rounds.length);
     }
   }, [guessedNumber, gameNumber, onGameOver]);
+
+  // Only reset them when the component is rendered for the first time.
+  useEffect(() => {
+    minBoundary = 1;
+    maxBoundary = 100;
+  }, []);
 
   function nextRandomHandler(direction) {
     if (
@@ -41,6 +49,7 @@ function GameScreen({ gameNumber, onGameOver }) {
     );
 
     setGuessedNumber(newGuessedNumber);
+    setRounds((prevRounds) => [newGuessedNumber, ...prevRounds]);
   }
 
   return (
@@ -51,9 +60,7 @@ function GameScreen({ gameNumber, onGameOver }) {
         onLower={nextRandomHandler.bind(this, 'lower')}
         onHigher={nextRandomHandler.bind(this, 'greater')}
       />
-      <View>
-        <Text>LOG ROUNDS</Text>
-      </View>
+      <RoundsLog rounds={rounds} />
     </View>
   );
 }
