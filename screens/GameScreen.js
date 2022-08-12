@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 
 import Title from '../components/ui/Title';
 import GuessedNumberContainer from '../components/game/GuessedNumberContainer';
@@ -70,6 +70,7 @@ export default GameScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
     padding: 24,
   },
 });

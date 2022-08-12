@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
 import Colors from '../../utils/colors';
 
@@ -12,19 +12,21 @@ function GuessedNumberContainer({ children }) {
 
 export default GuessedNumberContainer;
 
+const deviceWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   container: {
-    borderWidth: 4,
+    borderWidth: deviceWidth < 380 ? 2 : 4,
     borderColor: Colors.accent500,
-    margin: 24,
-    padding: 24,
+    margin: deviceWidth < 380 ? 12 : 24,
+    padding: deviceWidth < 380 ? 12 : 24,
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
   numberText: {
     fontFamily: 'open-sans-bold',
-    fontSize: 36,
+    fontSize: deviceWidth < 380 ? 12 : 36,
     color: Colors.accent500,
   },
 });
